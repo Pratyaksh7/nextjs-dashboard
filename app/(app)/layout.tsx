@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar"
+import { LogOutIcon } from "lucide-react";
+import { LayoutDropdown } from "@/components/layout-dropdown";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,11 +29,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased debug-screens min-h-screen w-full bg-white text-black flex`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased debug-screens bg-slate-50`}
       >
-        <Sidebar  />
-        <div className="w-full p-8">
-          {children}
+        <div className="flex w-full justify-between items-center py-4 px-6">
+          <p>MyCompany</p>
+          <div className="flex">
+            <LayoutDropdown />
+          </div>
+        </div>
+
+        <div className="min-h-screen w-ful text-black flex px-6">
+          <Sidebar />
+          <div className="w-full p-8">
+            {children}
+          </div>
         </div>
       </body>
     </html>
